@@ -3,7 +3,7 @@ import Foundation
 struct Event: Decodable, Hashable {
     let id: String
     let type: String
-    let actor: Actor
+    let actor: User
     let repo: RepositorySummary
 
     static func ==(lhs: Event, rhs: Event) -> Bool {
@@ -12,19 +12,5 @@ struct Event: Decodable, Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-    }
-    
-    struct Actor: Decodable {
-        let id: Int64
-        let login: String
-        let displayLogin: String?
-        let avatarUrl: URL
-
-        enum CodingKeys: String, CodingKey {
-            case id
-            case login
-            case displayLogin = "display_login"
-            case avatarUrl = "avatar_url"
-        }
     }
 }
