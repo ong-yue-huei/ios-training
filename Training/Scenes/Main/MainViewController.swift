@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 final class MainViewController: UIViewController {
     struct Dependency {
@@ -18,6 +19,7 @@ final class MainViewController: UIViewController {
         didSet {
             tableView.register(R.nib.eventTableViewCell)
             tableView.dataSource = dataSource
+            tableView.delegate = self
             tableView.tableHeaderView = UIView(frame: .zero)
             tableView.tableFooterView = UIView(frame: .zero)
         }
@@ -30,7 +32,7 @@ final class MainViewController: UIViewController {
     }
 
     private let dependency: Dependency
-
+    private var cancellables: Set<AnyCancellable> = []
     // MARK: - Initializer
 
     @available(*, unavailable)
@@ -52,19 +54,23 @@ final class MainViewController: UIViewController {
 
 // MARK: - Private
 
-extension MainViewController {
-    private func fetchEvents() {
-        dependency.getEventsUseCase.perform(page: 1) { [weak self] result in
-            switch result {
-            case .success(let events):
-                self?.updateTableViewDataSet(events: events)
-            case .failure(let error):
-                print(error)
-            }
-        }
+private extension MainViewController {
+    func fetchEvents() {
+        dependency.getEventsUseCase.perform(page: 1)
+            .sink(receiveCompletion: { completion in
+                switch completion{
+                    case .failure(let error):
+                        print(error)
+                    case .finished:
+                        print("Success")
+                }
+            }, receiveValue: { [weak self] result in
+                self?.updateTableViewDataSet(events: result)
+            })
+            .store(in: &cancellables)
     }
 
-    private func updateTableViewDataSet(events: [Event]) {
+    func updateTableViewDataSet(events: [Event]) {
         var snapshot = TableViewSnapShot()
         snapshot.appendSections([Const.sectionIdentifier])
         snapshot.appendItems(events, toSection: Const.sectionIdentifier)
@@ -81,3 +87,16 @@ extension MainViewController {
         }!
     }
 }
+
+// MARK: - UITableViewDelegate
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let event = dataSource.snapshot().itemIdentifiers(inSection: Const.sectionIdentifier)[indexPath.row]
+        let viewController = RepositoryViewController.instantiate(event)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
