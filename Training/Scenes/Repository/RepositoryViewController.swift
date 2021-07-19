@@ -75,9 +75,9 @@ extension RepositoryViewController {
 
 private extension RepositoryViewController {
     func setupUI() {
-        actorImageView.layer.cornerRadius = actorImage.frame.size.width * 0.5
+        actorImageView.layer.cornerRadius = actorImageView.frame.size.width * 0.5
         eventBackgroundView.layer.cornerRadius = 3;
-        repoOwnerImageView.layer.cornerRadius = repoOwnerImage.frame.size.width * 0.5
+        repoOwnerImageView.layer.cornerRadius = repoOwnerImageView.frame.size.width * 0.5
     }
     
     func bind() {
