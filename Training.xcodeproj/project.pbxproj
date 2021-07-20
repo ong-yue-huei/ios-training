@@ -27,6 +27,7 @@
 		A764F0352648F01800EEE731 /* GetEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F0342648F01800EEE731 /* GetEventsRequest.swift */; };
 		A764F0382648F9D800EEE731 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764F0362648F9D800EEE731 /* EventTableViewCell.swift */; };
 		A764F0392648F9D800EEE731 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A764F0372648F9D800EEE731 /* EventTableViewCell.xib */; };
+		A79AF281269FB773007C1A47 /* ViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = A79AF280269FB773007C1A47 /* ViewModelCore */; };
 		A7B548B02645BA4700176FE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B548AF2645BA4700176FE0 /* R.generated.swift */; };
 		BBF7453311DDAE6F754F03A9 /* Pods_TrainingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C106FCA52513286372AF6ED1 /* Pods_TrainingTests.framework */; };
 		E2D93345F09061BC00D7CB76 /* Pods_Training.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75CE20D590CA571818B2DCB /* Pods_Training.framework */; };
@@ -91,6 +92,7 @@
 		A72D0403264582EB00DA791D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A72D040F2645876D00DA791D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A72D04112645878500DA791D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A754EFFB269FB73800E1CEFF /* ViewModelCore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewModelCore; sourceTree = "<group>"; };
 		A764F0262648E0DD00EEE731 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A764F0282648E14000EEE731 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A764F02D2648E28800EEE731 /* RepositorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySummary.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F99ADFE72696EE740033CFF5 /* Nuke in Frameworks */,
+				A79AF281269FB773007C1A47 /* ViewModelCore in Frameworks */,
 				A764F0252648D79B00EEE731 /* Alamofire in Frameworks */,
 				E2D93345F09061BC00D7CB76 /* Pods_Training.framework in Frameworks */,
 			);
@@ -182,6 +185,7 @@
 				A72D03DE264582E600DA791D /* Training */,
 				A72D03F5264582EA00DA791D /* TrainingTests */,
 				A72D0400264582EB00DA791D /* TrainingUITests */,
+				A754EFD8269FB6C000E1CEFF /* Packages */,
 				A72D03DD264582E600DA791D /* Products */,
 				333672590240EE1F5A2795C8 /* Pods */,
 				83BB283E71515B7C5DCEE2FD /* Frameworks */,
@@ -239,6 +243,14 @@
 				F911C72F269BDA22000190E4 /* User */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A754EFD8269FB6C000E1CEFF /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A754EFFB269FB73800E1CEFF /* ViewModelCore */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 		A764F01F2648D65800EEE731 /* Main */ = {
@@ -401,6 +413,7 @@
 			packageProductDependencies = (
 				A764F0242648D79B00EEE731 /* Alamofire */,
 				F99ADFE62696EE740033CFF5 /* Nuke */,
+				A79AF280269FB773007C1A47 /* ViewModelCore */,
 			);
 			productName = Training;
 			productReference = A72D03DC264582E600DA791D /* Training.app */;
@@ -1024,6 +1037,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A764F0232648D79B00EEE731 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		A79AF280269FB773007C1A47 /* ViewModelCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ViewModelCore;
 		};
 		F99ADFE62696EE740033CFF5 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
